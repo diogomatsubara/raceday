@@ -29,4 +29,10 @@ class Racer
     return result
   end
 
+  def self.find id
+    id = (id.is_a? BSON::ObjectId) ? id : BSON::ObjectId.from_string(id)
+    result = self.collection.find(:_id=>id).first
+    return result.nil? ? nil : Racer.new(result)
+  end
+
 end
