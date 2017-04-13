@@ -18,7 +18,7 @@ class RacersControllerTest < ActionController::TestCase
 
   test "should create racer" do
     assert_difference('Racer.count') do
-      post :create, racer: { first_name: @racer.first_name, gender: @racer.gender, group: @racer.group, last_nmae: @racer.last_nmae, number: @racer.number, secs: @racer.secs }
+      post :create, racer: { first_name: @racer.first_name, gender: @racer.gender, group: @racer.group, last_name: @racer.last_name, number: @racer.number, secs: @racer.secs }
     end
 
     assert_redirected_to racer_path(assigns(:racer))
@@ -35,7 +35,7 @@ class RacersControllerTest < ActionController::TestCase
   end
 
   test "should update racer" do
-    patch :update, id: @racer, racer: { first_name: @racer.first_name, gender: @racer.gender, group: @racer.group, last_nmae: @racer.last_nmae, number: @racer.number, secs: @racer.secs }
+    patch :update, id: @racer, racer: { first_name: @racer.first_name, gender: @racer.gender, group: @racer.group, last_name: @racer.last_name, number: @racer.number, secs: @racer.secs }
     assert_redirected_to racer_path(assigns(:racer))
   end
 
