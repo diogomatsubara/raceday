@@ -60,4 +60,10 @@ class Racer
               .update_one(params)
   end
 
+  def destroy
+    self.class.collection
+              .find(:number => @number)
+              .delete_one
+  end
+
 end
