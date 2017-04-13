@@ -1,4 +1,5 @@
 class Racer
+  include ActiveModel::Model
 
   attr_accessor :id, :number, :first_name, :last_name, :gender, :group, :secs
 
