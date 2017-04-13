@@ -41,6 +41,22 @@ class Racer
     return result
   end
 
+  def self.paginate(params)
+    page = (params[:page] ||= 1).to_i
+    limit = (params[:per_page] ||= 30).to_i
+    skip = (page-1) * limit
+
+    racers = []
+    self.all({}, {:number=>1}, skip, limit).each do |doc|
+      racers << Racer.new(doc)
+    end
+
+    total = self.all.count
+    WillPaginate::Collection.create(page, limit, total) do |pager|
+      pager.replace(racers)
+    end
+  end
+
   def self.find id
     id = (id.is_a? BSON::ObjectId) ? id : BSON::ObjectId.from_string(id)
     result = self.collection.find(:_id=>id).first
