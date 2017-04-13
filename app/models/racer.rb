@@ -17,6 +17,14 @@ class Racer
     !@id.nil?
   end
 
+  def created_at
+    nil
+  end
+
+  def updated_at
+    nil
+  end
+
   def self.mongo_client
     Mongoid::Clients.default
   end
